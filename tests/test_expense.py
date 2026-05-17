@@ -1,4 +1,4 @@
-from src.spendwise.expenses import create_expense
+from spendwise.expenses import create_expense
 
 def test_create_valid_expense():
     expense = create_expense(
