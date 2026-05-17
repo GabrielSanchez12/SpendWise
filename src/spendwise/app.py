@@ -1,5 +1,7 @@
 from .expenses import create_expense
 from .storage import load_expenses, save_expenses
+from .currency_api import get_exchange_rate
+import requests
 
 def show_menu() -> None:
     print("\n=== SpendWise CLI ===")
@@ -8,7 +10,8 @@ def show_menu() -> None:
     print("3. Remover despesa")
     print("4. Exibir gastos totais")
     print("5. Exibir total por categoria")
-    print("6. Sair")
+    print("6. Converter total para outra moeda")
+    print("7. Sair")
 
 
 def add_expense() -> None:
@@ -91,11 +94,32 @@ def main() -> None:
         elif option == "5":
             show_total_by_category()
         elif option == "6":
+            convert_total_currency()
+        elif option == "7":
             print("Adeus!")
             break
-        else:
-            print("Opção inválida.")
+    print("Opção inválida.")
 
+def convert_total_currency() -> None:
+    expenses = load_expenses()
+
+    if not expenses:
+        print("Nenhuma despesa registrada.")
+        return
+
+    target_currency = input("Digite a moeda desejada (USD, EUR, etc): ").upper()
+
+    try:
+        exchange_rate = get_exchange_rate(target_currency)
+    except requests.RequestException:
+        print("Erro ao buscar taxa de câmbio.")
+        return
+
+    total_brl = sum(expense.amount for expense in expenses)
+    converted_total = total_brl * exchange_rate
+
+    print(f"Total em BRL: R${total_brl:.2f}")
+    print(f"Total convertido para {target_currency}: {converted_total:.2f}")
 
 if __name__ == "__main__":
     main()
