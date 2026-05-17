@@ -118,4 +118,4 @@ Gabriel Arakaki-Sanchez
 
 https://github.com/GabrielSanchez12/SpendWise
 
-![spendwise_use.png](spendwise_use.png)
+![spendwise_menu.png](spendwise_menu.png)
