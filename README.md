@@ -44,6 +44,9 @@ SpendWise/
 ├── requirements.txt
 └── VERSION
 ```
+## Nova funcionalidade - Etapa 2
+
+O SpendWise agora possui integração com a API pública de câmbio Frankfurter, permitindo a conversão total de despesas registradas para mais de 30 moedas internacionais, à escolha do usuário, em tempo real. Pode encontrar a nova opção para converter o total de despesas para outra moeda já no menu.
 
 ## Instalação
 
@@ -115,4 +118,4 @@ Gabriel Arakaki-Sanchez
 
 https://github.com/GabrielSanchez12/SpendWise
 
-![img_3.png](img_3.png)
+![spendwise_use.png](spendwise_use.png)
