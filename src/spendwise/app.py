@@ -31,7 +31,7 @@ def list_expenses() -> None:
         return
 
     for index, expense in enumerate(expenses, start=1):
-        print(f"{index}. {expense.description} - ${expense.amount:.2f} [{expense.category}]")
+        print(f"{index}. {expense.description} - R${expense.amount:.2f} [{expense.category}]")
 
 
 def remove_expense() -> None:
@@ -57,7 +57,7 @@ def show_total_spent() -> None:
     expenses = load_expenses()
     total = sum(expense.amount for expense in expenses)
 
-    print(f"Gasto total: ${total:.2f}")
+    print(f"Gasto total: R${total:.2f}")
 
 
 def show_total_by_category() -> None:
@@ -72,7 +72,7 @@ def show_total_by_category() -> None:
         return
 
     for category, total in totals.items():
-        print(f"{category}: ${total:.2f}")
+        print(f"{category}: R${total:.2f}")
 
 
 def main() -> None:
