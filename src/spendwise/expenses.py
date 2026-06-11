@@ -1,10 +1,12 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Expense:
     description: str
     amount: float
     category: str
+    id: int | None = None
 
     def to_dict(self) -> dict:
         return {
