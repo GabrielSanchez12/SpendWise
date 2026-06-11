@@ -1,5 +1,9 @@
 from .expenses import create_expense
-from .storage import load_expenses, save_expenses
+from .supabase_storage import (
+    load_expenses,
+    save_expense,
+    delete_expense,
+)
 from .currency_api import get_exchange_rate
 import requests
 
@@ -19,9 +23,8 @@ def add_expense() -> None:
     amount = float(input("Valor: "))
     category = input("Categoria: ")
 
-    expenses = load_expenses()
-    expenses.append(create_expense(description, amount, category))
-    save_expenses(expenses)
+    expense = create_expense(description, amount, category)
+    save_expense(expense)
 
     print("Despesa adicionada com sucesso!")
 
@@ -50,10 +53,10 @@ def remove_expense() -> None:
         print("Número de despesa inválido.")
         return
 
-    removed = expenses.pop(index - 1)
-    save_expenses(expenses)
+    expense_to_delete = expenses[index - 1]
+    delete_expense(expense_to_delete.id)
 
-    print(f"Despesa removida: {removed.description}")
+    print(f"Despesa removida: {expense_to_delete.description}")
 
 
 def show_total_spent() -> None:

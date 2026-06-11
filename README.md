@@ -44,9 +44,13 @@ SpendWise/
 ├── requirements.txt
 └── VERSION
 ```
-## Nova Funcionalidade - Etapa 2
+## Nova Funcionalidade - Etapa 2 - Integração com API
 
 O SpendWise agora possui integração com a API pública de câmbio Frankfurter, permitindo a conversão total de despesas registradas para mais de 30 moedas internacionais, à escolha do usuário, em tempo real. Pode encontrar a nova opção para converter o total de despesas para outra moeda já no menu.
+
+## Nova Funcionalidade - Etapa 3 - Armazenamento na nuvem
+
+Agora, os dados gerados utilizando SpendWise serão armazenados na nuvem via Supabase (PostgreSQL), em vez de serem armazenados localmente em formato JSON. Isso garante persistência dos dados entre execuções da aplicação e permite acesso a um banco de dados real hospedado na nuvem.
 
 ## Deploy / Publicação
 
@@ -74,6 +78,10 @@ Crie o ambiente virtual:
 python -m venv .venv
 .venv\Scripts\activate
 ```
+Configure o aqruivo .env na raíz do projeto:
+
+SUPABASE_URL=sua_url_do_supabase
+SUPABASE_KEY=sua_chave_publishable_do_supabase
 
 ## Para Linux/Mac
 
@@ -111,7 +119,7 @@ ruff check .
 ## Versão Atual
 
 ```txt
-1.0.0
+2.0.0
 ```
 
 ## Autor/Dev
